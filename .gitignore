@@ -1,0 +1,12 @@
+src/shebangnormalizer/__pycache__/
+tests/__pycache__/
+.pytest_cache/
+.mypy_cache/
+*.pyc
+.env
+.venv
+venv/
+dist/
+build/
+*.egg-info
+.DS_Store
