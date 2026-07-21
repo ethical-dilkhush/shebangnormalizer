@@ -1,5 +1,6 @@
-[![Python](https://img.shields.io/badge/python-3.9%2B-blue?logo=python)](https://www.python.org/)
+[![Python Version](https://img.shields.io/badge/python-3.9%2B-blue?logo=python)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Tests](https://img.shields.io/badge/tests-passing-brightgreen.svg)](#development)
 
 # shebangnormalizer
 
@@ -7,14 +8,16 @@ Normalize script shebangs to a portable `#!/usr/bin/env python3` form.
 
 ## About
 
-Shebang lines drift across machines, CI images, and shared environments. `shebangnormalizer` is a small CLI/library that rewrites interpreter headers to a standard, portable form. It is useful for anything you distribute, check into source control, or run across operating systems.
+Shebang lines drift across machines, CI images, and shared environments. `shebangnormalizer` is a small CLI/library that rewrites interpreter headers to a standard, portable form.
+
+It focuses on Python scripts because that is the most common portability failure, but it can operate on any file whose first line begins with `python`.
 
 ## Features
 
 - Replaces hard-coded interpreter paths such as `#!/usr/bin/python3` with `#!/usr/bin/env python3`.
 - Operates on single files or recursively walks directories.
 - Preview changes with `--dry-run` before touching disk.
-- Reports normalized files in plain text or JSON.
+- Output in plain text or JSON.
 - Pure stdlib implementation with no third-party runtime dependencies.
 
 ## Installation
@@ -23,7 +26,7 @@ Shebang lines drift across machines, CI images, and shared environments. `sheban
 python -m pip install .
 ```
 
-### Development install
+### Source install
 
 ```bash
 git clone https://github.com/ethical-dilkhush/shebangnormalizer.git
@@ -43,9 +46,28 @@ shebangnormalizer main.py config.py --dry-run
 shebangnormalizer ./scripts --reporter json
 ```
 
+## Project structure
+
+```text
+shebangnormalizer/
+  src/shebangnormalizer/
+    __init__.py
+    cli.py
+    core.py
+    reporter.py
+  tests/
+    test_shebangnormalizer.py
+  pyproject.toml
+  README.md
+```
+
 ## Development
 
 ```bash
 PYTHONPATH=src python -m shebangnormalizer.cli .
 PYTHONPATH=src python -m pytest tests -q
 ```
+
+## License
+
+[MIT](LICENSE)
