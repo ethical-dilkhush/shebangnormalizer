@@ -38,20 +38,18 @@ python -m pip install -e .
 
 ```bash
 shebangnormalizer .
-
 shebangnormalizer ./scripts --target '#!/usr/bin/env python3'
-
 shebangnormalizer main.py config.py --dry-run
-
 shebangnormalizer ./scripts --reporter json
 ```
 
 ## Project structure
 
-```text
+```
 shebangnormalizer/
   src/shebangnormalizer/
     __init__.py
+    __main__.py
     cli.py
     core.py
     reporter.py
@@ -59,7 +57,13 @@ shebangnormalizer/
     test_shebangnormalizer.py
   pyproject.toml
   README.md
+  LICENSE
+  .gitignore
+  .github/workflows/
+    tests.yml
 ```
+
+Source: [https://github.com/ethical-dilkhush/shebangnormalizer](https://github.com/ethical-dilkhush/shebangnormalizer)
 
 ## Development
 

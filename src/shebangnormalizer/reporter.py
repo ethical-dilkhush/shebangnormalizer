@@ -2,12 +2,10 @@
 
 from __future__ import annotations
 
-import argparse
 import json
 from typing import Iterable
 
 from shebangnormalizer.core import Report
-
 
 TEXT_REPORTER = "{path} -> {updated}"
 

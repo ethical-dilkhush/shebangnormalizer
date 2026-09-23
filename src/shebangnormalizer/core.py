@@ -2,10 +2,6 @@
 
 from __future__ import annotations
 
-import argparse
-import json
-import os
-import sys
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable, Optional
@@ -64,7 +60,7 @@ def normalize_file(
     if first == target:
         return Report(path, normalized=False, original=first, updated=first)
 
-    updated = target + text[len(first) :]
+    updated = target + text[len(first):]
 
     if not dry_run:
         Path(path).write_text(updated, encoding="utf-8")
@@ -78,4 +74,3 @@ def path_matches(path: str, include: Iterable[str]) -> bool:
     if not include_items:
         return True
     return lowered.endswith(include_items) or lowered.startswith(include_items)
-
